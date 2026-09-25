@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="会話を始める前に、話したいことや前提を整理するためのシンプルなWebアプリです。"
+  >
+  <title>前提共有整理</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <p class="app-kicker">会話の前に、頭の中を整理する</p>
+      <h1>前提共有整理</h1>
+      <p class="app-description">
+        話したいことと、その前提をいったん書き出してから会話に持ち込むためのツールです。
+        入力内容は保存されません。
+      </p>
+    </header>
+
+    <section class="card" aria-labelledby="input-heading">
+      <h2 id="input-heading" class="section-title">話す前の整理</h2>
+
+      <form id="conversation-form">
+        <div class="form-group">
+          <label for="topic">話したいこと</label>
+          <p class="field-help">今回の話題・テーマ</p>
+          <textarea
+            id="topic"
+            name="topic"
+            rows="3"
+            placeholder="例：最近、休日の過ごし方がうまくいってない気がする"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="background">前提</label>
+          <p class="field-help">
+            背景・経緯・条件・自分の中で考えていたことなど
+          </p>
+          <textarea
+            id="background"
+            name="background"
+            rows="6"
+            placeholder="例：ここ何週間か、休日に買い物や家事をまとめている。出かける予定も休日に入れることが多い。私は何も予定がない日も欲しいと思っているけど、行きたい場所もいくつかある。平日は帰りが遅い日があるので、平日に家事を増やすのも難しそう。来月は土日に予定が入っている週が多い。"
+          ></textarea>
+        </div>
+
+        <fieldset class="form-group">
+          <legend>この前提は相手に</legend>
+
+          <div class="radio-group">
+            <label class="radio-option">
+              <input
+                type="radio"
+                name="sharing-status"
+                value="共有済"
+              >
+              <span>共有済</span>
+            </label>
+
+            <label class="radio-option">
+              <input
+                type="radio"
+                name="sharing-status"
+                value="一部共有済"
+              >
+              <span>一部共有済</span>
+            </label>
+
+            <label class="radio-option">
+              <input
+                type="radio"
+                name="sharing-status"
+                value="初出"
+              >
+              <span>初出</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="thoughts">私の考え</label>
+          <p class="field-help">前提を踏まえて、今どう考えているか</p>
+          <textarea
+            id="thoughts"
+            name="thoughts"
+            rows="5"
+            placeholder="例：予定を減らしたいというより、家事や用事で休日が全部埋まる状態を変えたい。出かける日も欲しいし、何もしない日も欲しい。平日に移せることがあるなら移したいけど、自分だけではどう組み替えればいいかわからない。"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="goal">今回したいこと</label>
+          <p class="field-help">相談・共有・依頼・意思決定など</p>
+          <textarea
+            id="goal"
+            name="goal"
+            rows="5"
+            placeholder="例：お互いが休日にやりたいことと、毎週やる必要がある家事や用事を一度整理したい。そのうえで、平日に移すもの、休日に残すもの、毎週はやらなくていいものを一緒に考えたい。"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="primary-button">
+          テキストにする
+        </button>
+      </form>
+    </section>
+
+    <section class="card result-card" aria-labelledby="result-heading">
+      <div class="result-header">
+        <h2 id="result-heading" class="section-title">生成結果</h2>
+        <p id="copy-status" class="copy-status" aria-live="polite"></p>
+      </div>
+
+      <textarea
+        id="result"
+        class="result-textarea"
+        rows="14"
+        readonly
+        placeholder="ここに生成結果が表示されます。"
+        aria-label="生成結果"
+      ></textarea>
+
+      <button
+        type="button"
+        id="copy-button"
+        class="secondary-button"
+        disabled
+      >
+        コピー
+      </button>
+    </section>
+
+    <footer class="app-footer">
+      <p>入力内容はブラウザ上だけで処理され、保存されません。</p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
